@@ -1,9 +1,9 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Input, Button, List } from "antd";
-import store from "./store/index.js";
+import store from "./store2/index.js";
 
-class TodoList extends React.Component {
+class TodoList2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = store.getState();
@@ -13,15 +13,15 @@ class TodoList extends React.Component {
     store.subscribe(this.handleStoreChange);
   }
 
+  handleStoreChange() {
+    this.setState(store.getState());
+  }
+
   handleButtonClick() {
     const action = {
       type: "add_todo_item",
     };
     store.dispatch(action);
-  }
-
-  handleStoreChange() {
-    this.setState(store.getState());
   }
 
   handleInputChange(e) {
@@ -57,4 +57,4 @@ class TodoList extends React.Component {
   }
 }
 
-export default TodoList;
+export default TodoList2;
